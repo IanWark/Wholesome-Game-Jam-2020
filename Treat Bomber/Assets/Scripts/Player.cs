@@ -1,17 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("Game variables")]
+    [Header("Game Variables")]
     [SerializeField]
     private Vector2 speed = new Vector2(0.2f, 0);
 
-    private Rigidbody2D rigidBody = null;
-    private SpriteRenderer sprite = null;
+    [Header("Technical References")]
+    [SerializeField]
+    private Transform candyPrefab = null;
 
-    private Vector2 moveInput = new Vector2();
+    [SerializeField]
+    private CandyDataList candyDataList = null;
+
+    protected Rigidbody2D rigidBody = null;
+    protected SpriteRenderer sprite = null;
+
+    protected Vector2 moveInput = new Vector2();
 
     // Start is called before the first frame update
     void Start()
@@ -23,18 +28,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleInput();
-
-        // Since we're not using much physics for movement, do movement in Update instead of FixedUpdate (?)
-        DoMove();
-
-        DoAnimations();
-    }
-
-    private void HandleInput()
-    {
         moveInput.x = Input.GetAxis("Horizontal");
         moveInput.y = Input.GetAxis("Vertical");
+
+        // Spawn candy
+        if(Input.GetButtonDown("Fire1"))
+        {
+            var candyObject = Instantiate(candyPrefab,transform);
+            Candy candyScript = candyObject.GetComponent<Candy>();
+
+            candyScript.SetCandy(candyDataList.GetCandyDataObject(eCandyType.ZOMBIE)); // TODO do it based off currently selected candy
+        }
+
+        DoMove();
+        FlipToMovement();
     }
 
     private void DoMove()
@@ -42,11 +49,11 @@ public class Player : MonoBehaviour
         rigidBody.MovePosition(rigidBody.position + (moveInput * speed));
     }
 
-    private void DoAnimations()
+    // If going right, flip sprite
+    // If going left, unflip sprite
+    // If not moving, do not change spirte
+    private void FlipToMovement()
     {
-        // If going right, flip sprite
-        // If going left, unflip sprite
-        // If not moving, do not change spirte
         if (moveInput.x > 0)
         {
             sprite.flipX = true;
@@ -56,5 +63,4 @@ public class Player : MonoBehaviour
             sprite.flipX = false;
         }
     }
-
 }
