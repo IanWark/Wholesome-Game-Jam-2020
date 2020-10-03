@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: CandyData
   m_EditorClassIdentifier: 
   candyList:
-  - candyType: 0
-    sprite: {fileID: 21300000, guid: e864dbb32d9641948a0489031226547b, type: 3}
-    candyName: NONE
   - candyType: 1
     sprite: {fileID: 21300000, guid: 5c7c486f90311ef43b96d6b252c703e7, type: 3}
     candyName: Gummy Brains
@@ -27,4 +24,4 @@ MonoBehaviour:
     candyName: Candy Corn
   - candyType: 4
     sprite: {fileID: 21300000, guid: 8a5445aece04b8849a0ac5b30affba9a, type: 3}
-    candyName: Blood Pouch
+    candyName: Bloud Pouch
