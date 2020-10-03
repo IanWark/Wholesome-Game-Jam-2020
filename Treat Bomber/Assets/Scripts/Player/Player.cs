@@ -5,11 +5,14 @@ public class Player : MonoBehaviour
     [Header("Game Variables")]
     [SerializeField, Tooltip("How quickly they can move in X and Y directions.")]
     private Vector2 speed = new Vector2(0.2f, 0);
-    private Vector2 moveInput = new Vector2();
+    private Vector2 newPosition = new Vector2();
 
     [SerializeField, Tooltip("Time we must wait before dropping another candy.")]
     private float timeBetweenCandy = 1;
     private float candyTimer = 0;
+
+    [SerializeField, Tooltip("The distance that must be traveled in a frame to make the sprite flip.")]
+    private float distanceToFlip = 0.1f;
 
     [Header("Technical References")]
     [SerializeField]
@@ -49,8 +52,8 @@ public class Player : MonoBehaviour
     private void HandleInput()
     {
         // Movement
-        moveInput.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-        moveInput.y = transform.position.y;
+        newPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        newPosition.y = transform.position.y;
 
         // Candy Selection
         if (Input.GetButtonDown("Select 1"))
@@ -141,7 +144,7 @@ public class Player : MonoBehaviour
     private void DoMove()
     {
         FlipToMovement();
-        rigidBody.MovePosition(moveInput);
+        rigidBody.MovePosition(newPosition);
     }
 
     // If going right, flip sprite
@@ -149,13 +152,18 @@ public class Player : MonoBehaviour
     // If not moving, do not change spirte
     private void FlipToMovement()
     {
-        if (moveInput.x > transform.position.x)
+        float difference = newPosition.x - transform.position.x;
+
+        if (Mathf.Abs(difference) > distanceToFlip)
         {
-            sprite.flipX = true;
-        }
-        else if (moveInput.x < transform.position.x)
-        {
-            sprite.flipX = false;
+            if (difference > 0)
+            {
+                transform.eulerAngles = new Vector2(0, 180);
+            }
+            else if (difference < 0)
+            {
+                transform.eulerAngles = new Vector2(0, 0);
+            }
         }
     }
 }
