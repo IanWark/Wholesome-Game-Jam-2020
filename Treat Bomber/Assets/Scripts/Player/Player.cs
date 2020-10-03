@@ -50,8 +50,8 @@ public class Player : MonoBehaviour
     private void HandleInput()
     {
         // Movement
-        moveInput.x = Input.GetAxis("Horizontal");
-        moveInput.y = Input.GetAxis("Vertical");
+        moveInput.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        moveInput.y = transform.position.y;
 
         // Candy Selection
         if (Input.GetButtonDown("Select 1"))
@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
 
     private void DoMove()
     {
-        rigidBody.MovePosition(rigidBody.position + (moveInput * speed));
+        rigidBody.MovePosition(moveInput);
     }
 
     // If going right, flip sprite
