@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RobotSpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     [SerializeField]
-    private Transform robotPrefab = null;
+    private Transform prefab = null;
 
     [SerializeField]
     float spawnTime = 5.0f;
@@ -20,7 +20,7 @@ public class RobotSpawner : MonoBehaviour
 
         if (timeLeft <= 0.0f)
         {
-            Instantiate(robotPrefab, transform.position, transform.rotation);
+            Instantiate(prefab, transform.position, transform.rotation);
             timeLeft = spawnTime;
         }
     }
