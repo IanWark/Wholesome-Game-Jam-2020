@@ -8,8 +8,6 @@ public class Zombie : LittleBeast
     protected Rigidbody2D rigidBody = null;
     protected SpriteRenderer sprite = null;
 
-    
-
     // Start is called before the first frame update
     void Start()
     {

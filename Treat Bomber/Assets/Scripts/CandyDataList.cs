@@ -5,16 +5,30 @@ using System.Collections.Generic;
 public class CandyDataList : ScriptableObject
 {
     [System.Serializable]
-    public struct CandyDataObject
+    public class CandyDataObject
     {
         public eCandyType candyType;
         public Sprite sprite;
         public string candyName;
     }
     
-    // Would be nice if it was a dictionary, those don't serialize so well (I think)
     [SerializeField]
     private List<CandyDataObject> candyList = new List<CandyDataObject>();
+
+    public int GetCount()
+    {
+        return candyList.Count;
+    }
+
+    public CandyDataObject GetCandyDataObject(int index)
+    {
+        if(index < 0 || index > candyList.Count-1)
+        {
+            index = 0;
+        }
+
+        return candyList[index];
+    }
 
     public CandyDataObject GetCandyDataObject(eCandyType candyType)
     {
