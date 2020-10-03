@@ -31,7 +31,8 @@ public class Candy : MonoBehaviour
     // On colliding with something
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<LittleBeast>() != null)
+        // If touching a kid or a wall
+        if (collision.gameObject.GetComponent<LittleBeast>() != null || collision.gameObject.layer == 8)
         {
             // fukken die
             Destroy(gameObject);

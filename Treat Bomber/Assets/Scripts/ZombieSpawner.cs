@@ -17,7 +17,7 @@ public class ZombieSpawner : MonoBehaviour
 
         if (timeLeft <= 0.0f)
         {
-            Instantiate(zombiePrefab, transform);
+            Instantiate(zombiePrefab, transform.position, transform.rotation);
             timeLeft = spawnTime;
         }
     }

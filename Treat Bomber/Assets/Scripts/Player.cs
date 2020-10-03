@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         // Spawn candy
         if(Input.GetButtonDown("Fire1"))
         {
-            var candyObject = Instantiate(candyPrefab,transform);
+            var candyObject = Instantiate(candyPrefab, transform.position, transform.rotation);
             Candy candyScript = candyObject.GetComponent<Candy>();
 
             candyScript.SetCandy(candyDataList.GetCandyDataObject(eCandyType.ZOMBIE)); // TODO do it based off currently selected candy
