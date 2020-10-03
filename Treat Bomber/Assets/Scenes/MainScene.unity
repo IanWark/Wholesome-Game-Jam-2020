@@ -600,6 +600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 631738078}
   - component: {fileID: 631738077}
+  - component: {fileID: 631738079}
   m_Layer: 0
   m_Name: LittleBeastSpawner
   m_TagString: Untagged
@@ -634,6 +635,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &631738079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631738076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d64ec5c0aca20d4696589b4ae3262fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotPrefab: {fileID: 946647711024654188, guid: faf9c04ed22a062af8dfe4ad49970815, type: 3}
 --- !u!1 &699613701
 GameObject:
   m_ObjectHideFlags: 0
