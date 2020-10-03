@@ -44,7 +44,6 @@ public class Player : MonoBehaviour
     {
         HandleInput();
         DoMove();
-        FlipToMovement();
     }
 
     private void HandleInput()
@@ -141,6 +140,7 @@ public class Player : MonoBehaviour
 
     private void DoMove()
     {
+        FlipToMovement();
         rigidBody.MovePosition(moveInput);
     }
 
@@ -149,11 +149,11 @@ public class Player : MonoBehaviour
     // If not moving, do not change spirte
     private void FlipToMovement()
     {
-        if (moveInput.x > 0)
+        if (moveInput.x > transform.position.x)
         {
             sprite.flipX = true;
         }
-        else if (moveInput.x < 0)
+        else if (moveInput.x < transform.position.x)
         {
             sprite.flipX = false;
         }
