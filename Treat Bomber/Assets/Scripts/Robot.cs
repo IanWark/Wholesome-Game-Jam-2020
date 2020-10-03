@@ -8,9 +8,9 @@ public class Robot : LittleBeast
     protected Rigidbody2D rigidBody = null;
     protected SpriteRenderer sprite = null;
 
-    float lurchTime = 1.0f;
-    float timeLeft = 0;
-    bool moving = true;
+    private float lurchTime = 1.0f;
+    private float timeLeft = 0;
+    private bool moving = true;
     
 
     // Start is called before the first frame update
