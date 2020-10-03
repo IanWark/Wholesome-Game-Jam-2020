@@ -31,6 +31,7 @@ public class CandySelectionUIController : MonoBehaviour
         HorizontalLayoutGroup horizontalLayoutGroup = GetComponent<HorizontalLayoutGroup>();
         float width = (selectorWidth * candySelectors.Count) + (horizontalLayoutGroup.spacing * candySelectors.Count - 1);
         rectTransform.sizeDelta = new Vector2(width, selectorHeight);
+        rectTransform.anchoredPosition = new Vector2((width / 2) + (horizontalLayoutGroup.spacing * 2), rectTransform.anchoredPosition.y);
     }
 
     public void SelectCandy(int index)
