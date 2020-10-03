@@ -1,23 +1,19 @@
 ﻿using UnityEngine;
 
-public class Robot : LittleBeast
+public class Scarecrow : LittleBeast
 {
-    private Vector2 speed = new Vector2(0.1f, 0);
+    private Vector2 speed = new Vector2(0.05f, 0);
     protected Vector2 movement = new Vector2();
 
     protected Rigidbody2D rigidBody = null;
     protected SpriteRenderer sprite = null;
 
-    // Robot will move immediately
-    private float lurchTime = 1.0f;
-    private float timeLeft = 0;
-    private bool moving = false;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        preferredCandyType = eCandyType.ROBOT;
+        preferredCandyType = eCandyType.SCARECROW;
 
         rigidBody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -30,18 +26,8 @@ public class Robot : LittleBeast
     // Update is called once per frame
     void Update()
     {
-        timeLeft -= Time.deltaTime;
-
-        if (timeLeft <= 0.0f)
-        {
-            timeLeft = lurchTime;
-            moving = !moving;
-        }
-        if (moving)
-        {
-            DoMove();
-            FlipToMovement();
-        }
+        DoMove();
+        FlipToMovement();
     }
 
     private void DoMove()
