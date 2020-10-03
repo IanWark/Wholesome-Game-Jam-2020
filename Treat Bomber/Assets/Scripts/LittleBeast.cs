@@ -5,14 +5,30 @@ public abstract class LittleBeast : MonoBehaviour
     // Must be set by derived class!
     protected eCandyType preferredCandyType;
 
-    // On colliding with a candy
-    private void OnTriggerEnter2D(Collider2D collision)
+    // Can be set by derived class!
+    protected int pointsValue = 1;
+
+    public eCandyType GetPreferredCandyType()
     {
-        Candy candyObject = collision.gameObject.GetComponent<Candy>();
-        if (candyObject != null && candyObject.GetCandyType() == preferredCandyType)
+        return preferredCandyType;
+    }
+
+    // Candy controls the interaction, because of problems with multiple LBs being hit with 1 candy.
+    public void RecieveCandy(eCandyType candyType)
+    {
+        ScoringController scoringController = FindObjectOfType<ScoringController>();
+
+        if (candyType == preferredCandyType)
         {
-            // fukken die
-            Destroy(gameObject);
+            scoringController.IncreaseScore(pointsValue);
         }
+        else
+        {
+            scoringController.IncreaseStrikes();
+        }
+
+        // fukken die
+        // TODO run off screen instead
+        Destroy(gameObject);
     }
 }
