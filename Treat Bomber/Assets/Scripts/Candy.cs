@@ -18,19 +18,17 @@ public class Candy : MonoBehaviour
     private eCandyType candyType = eCandyType.NONE;
 
     private Rigidbody2D rigidBody = null;
+    private Collider2D ourCollider = null;
     private SpriteRenderer sprite = null;
 
     bool shouldDie = false;
+    bool shouldCheckCollision = false;
 
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        ourCollider = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
-    }
-
-    private void Update()
-    {
-        rigidBody.MovePosition(rigidBody.position + movement);
     }
 
     public eCandyType GetCandyType()
@@ -44,15 +42,25 @@ public class Candy : MonoBehaviour
         sprite.sprite = newCandy.sprite;
     }
 
-    // On colliding with something
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
+    {
+        rigidBody.MovePosition(rigidBody.position + movement);
+
+        // Checking colliders doesn't work on enter but works on next update, so do the work here
+        if (shouldCheckCollision)
+        {
+            CheckCollision();
+        }
+    }
+
+    private void CheckCollision()
     {
         if (!shouldDie)
         {
             // We may hit multiple things at once
             List<Collider2D> colliders = new List<Collider2D>();
             ContactFilter2D filter = new ContactFilter2D();
-            collision.OverlapCollider(filter.NoFilter(), colliders);
+            ourCollider.OverlapCollider(filter.NoFilter(), colliders);
 
             LittleBeast bestLittleBeast = null;
             for (int i = 0; i < colliders.Count; ++i)
@@ -94,5 +102,14 @@ public class Candy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        shouldCheckCollision = false;
+    }
+
+    // On colliding with something
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Checking colliders doesn't work here but works next update, so set a flag
+        shouldCheckCollision = true;  
     }
 }
