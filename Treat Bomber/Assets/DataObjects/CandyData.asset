@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   candyList:
   - candyType: 1
-    sprite: {fileID: 21300000, guid: 5c7c486f90311ef43b96d6b252c703e7, type: 3}
+    sprite: {fileID: 21300000, guid: 884d0f2b13c89a44d9fa58090bd86d36, type: 3}
     candyName: Gummy Brains
   - candyType: 2
-    sprite: {fileID: 21300000, guid: ea0d619a658179b4ba25bbb430c6cd20, type: 3}
+    sprite: {fileID: 21300000, guid: 7996a3b92512e2844a20c9ca47cdfc59, type: 3}
     candyName: Microchips
   - candyType: 3
-    sprite: {fileID: 21300000, guid: 0d67264a1d6ec504899ed7a49ffdcae4, type: 3}
+    sprite: {fileID: 21300000, guid: fc1ca609811094443b7ca1fa920c9a29, type: 3}
     candyName: Candy Corn
   - candyType: 4
-    sprite: {fileID: 21300000, guid: 8a5445aece04b8849a0ac5b30affba9a, type: 3}
+    sprite: {fileID: 21300000, guid: 836dcb3aab6f2e842abe5d52523f61e4, type: 3}
     candyName: Bloud Pouch
