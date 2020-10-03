@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Vector2 speed = new Vector2(0.2f, 0);
 
+    protected Vector2 moveInput = new Vector2();
+
     [Header("Technical References")]
     [SerializeField]
     private Transform candyPrefab = null;
@@ -15,8 +17,6 @@ public class Player : MonoBehaviour
 
     protected Rigidbody2D rigidBody = null;
     protected SpriteRenderer sprite = null;
-
-    protected Vector2 moveInput = new Vector2();
 
     // Start is called before the first frame update
     void Start()

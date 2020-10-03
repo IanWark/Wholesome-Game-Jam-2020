@@ -8,13 +8,22 @@ public enum eCandyType
 
 public class Candy : MonoBehaviour
 {
+    private Vector2 movement = new Vector2(0, -0.25f);
+
     private eCandyType candyType = eCandyType.NONE;
 
+    private Rigidbody2D rigidBody = null;
     private SpriteRenderer sprite = null;
 
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
+        rigidBody = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        rigidBody.MovePosition(rigidBody.position + movement);
     }
 
     public eCandyType GetCandyType()

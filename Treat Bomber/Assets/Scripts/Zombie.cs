@@ -3,12 +3,12 @@
 public class Zombie : LittleBeast
 {
     private Vector2 speed = new Vector2(0.05f, 0);
+    protected Vector2 movement = new Vector2();
 
     protected Rigidbody2D rigidBody = null;
-    protected BoxCollider2D bodyCollider = null;
     protected SpriteRenderer sprite = null;
 
-    protected Vector2 moveInput = new Vector2();
+    
 
     // Start is called before the first frame update
     void Start()
@@ -16,12 +16,11 @@ public class Zombie : LittleBeast
         preferredCandyType = eCandyType.ZOMBIE;
 
         rigidBody = GetComponent<Rigidbody2D>();
-        bodyCollider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
 
         // Randomly start moving to the left or right.
         int[] values = { -1, 1 };
-        moveInput.x = values[Random.Range(0, 2)];
+        movement.x = values[Random.Range(0, 2)];
     }
 
     // Update is called once per frame
@@ -33,7 +32,7 @@ public class Zombie : LittleBeast
 
     private void DoMove()
     {
-        rigidBody.MovePosition(rigidBody.position + (moveInput * speed));
+        rigidBody.MovePosition(rigidBody.position + (movement * speed));
     }
 
     // If going right, flip sprite
@@ -41,11 +40,11 @@ public class Zombie : LittleBeast
     // If not moving, do not change spirte
     private void FlipToMovement()
     {
-        if (moveInput.x > 0)
+        if (movement.x > 0)
         {
             sprite.flipX = true;
         }
-        else if (moveInput.x < 0)
+        else if (movement.x < 0)
         {
             sprite.flipX = false;
         }
@@ -55,6 +54,6 @@ public class Zombie : LittleBeast
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Change movement direction
-        moveInput.x *= -1;
+        movement.x *= -1;
     }
 }
