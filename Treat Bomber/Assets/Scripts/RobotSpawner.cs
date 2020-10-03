@@ -7,7 +7,10 @@ public class RobotSpawner : MonoBehaviour
     [SerializeField]
     private Transform robotPrefab = null;
 
+    [SerializeField]
     float spawnTime = 5.0f;
+
+    [SerializeField]
     float timeLeft = 0;
 
     // Update is called once per frame
