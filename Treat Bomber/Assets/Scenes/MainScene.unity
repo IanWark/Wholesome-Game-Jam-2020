@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 0.2, y: 0}
+  timeBetweenCandy: 0.5
   candyPrefab: {fileID: 5599320727840998481, guid: 51c1c1ee0215f1544aaf36faa0177a17, type: 3}
   candyDataList: {fileID: 11400000, guid: 515c8223045c46f46906e63350dbf41b, type: 2}
 --- !u!61 &67720370

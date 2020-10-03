@@ -3,10 +3,13 @@
 public class Player : MonoBehaviour
 {
     [Header("Game Variables")]
-    [SerializeField]
+    [SerializeField, Tooltip("How quickly they can move in X and Y directions.")]
     private Vector2 speed = new Vector2(0.2f, 0);
+    private Vector2 moveInput = new Vector2();
 
-    protected Vector2 moveInput = new Vector2();
+    [SerializeField, Tooltip("Time we must wait before dropping another candy.")]
+    private float timeBetweenCandy = 1;
+    private float candyTimer = 0;
 
     [Header("Technical References")]
     [SerializeField]
@@ -31,13 +34,20 @@ public class Player : MonoBehaviour
         moveInput.x = Input.GetAxis("Horizontal");
         moveInput.y = Input.GetAxis("Vertical");
 
-        // Spawn candy
-        if(Input.GetButtonDown("Fire1"))
+        
+        if (candyTimer > 0)
         {
+            candyTimer -= Time.deltaTime;
+        } 
+        else if(Input.GetButtonDown("Fire1"))
+        {
+            // Spawn candy
             var candyObject = Instantiate(candyPrefab, transform.position, transform.rotation);
             Candy candyScript = candyObject.GetComponent<Candy>();
 
             candyScript.SetCandy(candyDataList.GetCandyDataObject(eCandyType.ZOMBIE)); // TODO do it based off currently selected candy
+
+            candyTimer = timeBetweenCandy;
         }
 
         DoMove();
