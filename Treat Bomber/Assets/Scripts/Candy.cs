@@ -4,6 +4,9 @@ public enum eCandyType
 {
     NONE,
     ZOMBIE,
+    ROBOT,
+    SCARECROW,
+    VAMPIRE,
 }
 
 public class Candy : MonoBehaviour
