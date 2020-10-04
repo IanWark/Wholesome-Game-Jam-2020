@@ -10,24 +10,18 @@ public class Vampire : LittleBeast
     private float sinVal = 0;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         preferredCandyType = eCandyType.VAMPIRE;
 
-        rigidBody = GetComponent<Rigidbody2D>();
-        ourCollider = GetComponent<Collider2D>();
-        sprite = GetComponent<SpriteRenderer>();
-
-        // Randomly start moving to the left or right.
-        int[] values = { -1, 1 };
-        movement.x = values[Random.Range(0, 2)];
-
         // Spawn vampire above other monsters
         rigidBody.MovePosition(rigidBody.position * raiseVampire);
+
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    override protected void Update()
     {
         // Make vampire fly in sine wave pattern
         sinVal += Time.deltaTime * 10;
@@ -35,6 +29,8 @@ public class Vampire : LittleBeast
 
         DoMove();
         FlipToMovement();
+
+        base.Update();
     }
 
     private void DoMove()

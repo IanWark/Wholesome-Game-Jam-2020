@@ -8,24 +8,18 @@ public class Robot : LittleBeast
     private float lurchTime = 1.0f;
     private float timeLeft = 1.0f;
     private bool moving = true;
-    
+
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         preferredCandyType = eCandyType.ROBOT;
 
-        rigidBody = GetComponent<Rigidbody2D>();
-        ourCollider = GetComponent<Collider2D>();
-        sprite = GetComponent<SpriteRenderer>();
-
-        // Randomly start moving to the left or right.
-        int[] values = { -1, 1 };
-        movement.x = values[Random.Range(0, 2)];
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    override protected void Update()
     {
         timeLeft -= Time.deltaTime;
 
@@ -39,6 +33,8 @@ public class Robot : LittleBeast
             DoMove();
             FlipToMovement();
         }
+
+        base.Update();
     }
 
     private void DoMove()

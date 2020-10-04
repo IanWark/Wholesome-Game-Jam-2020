@@ -2,11 +2,20 @@
 
 public abstract class LittleBeast : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject speechBubbleObject = null;
+    [SerializeField]
+    private SpriteRenderer speechBubbleItemSprite = null;
+
     // Must be set by derived class!
     protected eCandyType preferredCandyType;
+    protected CandyDataList.CandyDataObject preferredCandyData;
 
     // Can be set by derived class!
     protected int pointsValue = 1;
+
+    protected float candySpeechTime = 10f;  // Time until candy demand speech bubbles appears
+    protected float giveUpTime = 30f;       // Time until giving up and leaving
 
     protected Vector2 movement = new Vector2();
 
@@ -14,6 +23,7 @@ public abstract class LittleBeast : MonoBehaviour
     protected Collider2D ourCollider = null;
     protected SpriteRenderer sprite = null;
 
+    protected bool showingSpeechBubble = false;
     protected bool isLeaving = false;
 
     public eCandyType GetPreferredCandyType()
@@ -21,20 +31,62 @@ public abstract class LittleBeast : MonoBehaviour
         return preferredCandyType;
     }
 
+    protected virtual void Start()
+    {
+        // Assumes preferredCandyType has been set by derived class!
+        preferredCandyData = FindObjectOfType<CandyDataHolder>().candyDataList.GetCandyDataObject(preferredCandyType);
+
+        rigidBody = GetComponent<Rigidbody2D>();
+        ourCollider = GetComponent<Collider2D>();
+        sprite = GetComponent<SpriteRenderer>();
+
+        speechBubbleObject.SetActive(false);
+
+        // Randomly start moving to the left or right.
+        int[] values = { -1, 1 };
+        movement.x = values[Random.Range(0, 2)];
+    }
+
+    protected virtual void Update()
+    {
+        if (!isLeaving)
+        {
+            candySpeechTime -= Time.deltaTime;
+            if (!showingSpeechBubble && candySpeechTime <= 0)
+            {
+                speechBubbleObject.SetActive(true);
+                speechBubbleItemSprite.sprite = preferredCandyData.sprite;
+                showingSpeechBubble = true;
+            }
+
+            giveUpTime -= Time.deltaTime;
+            if (giveUpTime <= 0)
+            {
+                Unhappy();
+            }
+        }
+    }
+
     // Candy controls the interaction, because of problems with multiple LBs being hit with 1 candy.
     public void RecieveCandy(eCandyType candyType)
     {
-        ScoringController scoringController = FindObjectOfType<ScoringController>();
-
         if (candyType == preferredCandyType)
         {
+            ScoringController scoringController = FindObjectOfType<ScoringController>();
             scoringController.IncreaseScore(pointsValue);
         }
         else
         {
-            scoringController.IncreaseStrikes();
+            Unhappy();
         }
 
+        Leave();
+    }
+
+    private void Unhappy()
+    {
+        ScoringController scoringController = FindObjectOfType<ScoringController>();
+        scoringController.IncreaseStrikes();
         Leave();
     }
 
@@ -43,7 +95,7 @@ public abstract class LittleBeast : MonoBehaviour
         // Set flag to use leaving speed
         isLeaving = true;
 
-        // Ignore walls
+        // Ignore walls/candy
         ourCollider.isTrigger = true;
 
         // Go to closest edge
@@ -64,11 +116,11 @@ public abstract class LittleBeast : MonoBehaviour
     {
         if (movement.x > 0)
         {
-            sprite.flipX = true;
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
         else if (movement.x < 0)
         {
-            sprite.flipX = false;
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
 

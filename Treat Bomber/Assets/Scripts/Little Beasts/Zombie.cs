@@ -6,24 +6,20 @@ public class Zombie : LittleBeast
     protected float leavingSpeedMultiplier = 10;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         preferredCandyType = eCandyType.ZOMBIE;
 
-        rigidBody = GetComponent<Rigidbody2D>();
-        ourCollider = GetComponent<Collider2D>();
-        sprite = GetComponent<SpriteRenderer>();
-
-        // Randomly start moving to the left or right.
-        int[] values = { -1, 1 };
-        movement.x = values[Random.Range(0, 2)];
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    override protected void Update()
     {
         DoMove();
         FlipToMovement();
+
+        base.Update();
     }
 
     private void DoMove()

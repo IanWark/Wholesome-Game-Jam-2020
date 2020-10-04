@@ -19,11 +19,9 @@ public class Player : MonoBehaviour
     private Transform candyPrefab = null;
 
     [SerializeField]
-    private CandyDataList candyDataList = null;
-
-    [SerializeField]
     private CandySelectionUIController candySelectionUI = null;
 
+    private CandyDataList candyDataList = null;
     private const int candyMinIndex = 0;
     private const int candyMaxIndex = 3;
     private int selectedCandyIndex = 1;
@@ -38,6 +36,7 @@ public class Player : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
 
+        candyDataList = FindObjectOfType<CandyDataHolder>().candyDataList;
         candySelectionUI.Setup(candyDataList);
         SelectCandy(0);
     }

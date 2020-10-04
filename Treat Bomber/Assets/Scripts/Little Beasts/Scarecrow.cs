@@ -19,27 +19,21 @@ public class Scarecrow : LittleBeast
 
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         preferredCandyType = eCandyType.SCARECROW;
-
-        rigidBody = GetComponent<Rigidbody2D>();
-        ourCollider = GetComponent<Collider2D>();
-        sprite = GetComponent<SpriteRenderer>();
-
-        // Randomly start moving to the left or right.
-        int[] values = { -1, 1 };
-        movement.x = values[Random.Range(0, 2)];
 
         // Set the starting ground height to where the scarecrow is standing
         groundHeight.x = 0;
         groundHeight.y = rigidBody.position.y;
 
         ySpeed = jumpSpeed;
+
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    override protected void Update()
     {
         if (moving)
         {
@@ -70,6 +64,8 @@ public class Scarecrow : LittleBeast
                 moving = true;
             }
         }
+
+        base.Update();
     }
 
     private void DoMove()
