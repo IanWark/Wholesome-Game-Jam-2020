@@ -37,7 +37,8 @@ public abstract class LittleBeast : MonoBehaviour
     private AudioSource audioSource = null;
 
     protected bool showingSpeechBubble = false;
-    protected bool isLeaving = false;
+    private bool enteredPlayableArea = false;
+    public bool isLeaving = false;
 
     public eCandyType GetPreferredCandyType()
     {
@@ -59,7 +60,7 @@ public abstract class LittleBeast : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (!isLeaving)
+        if (!isLeaving && enteredPlayableArea)
         {
             candySpeechTime -= Time.deltaTime;
             if (!showingSpeechBubble && candySpeechTime <= 0)
@@ -79,19 +80,22 @@ public abstract class LittleBeast : MonoBehaviour
     // Candy controls the interaction, because of problems with multiple LBs being hit with 1 candy.
     public void RecieveCandy(eCandyType candyType)
     {
-        if (candyType == preferredCandyType)
+        if (!isLeaving)
         {
-            ShowSpeechBubble(happySprite);
-            ScoringController scoringController = FindObjectOfType<ScoringController>();
-            scoringController.IncreaseScore(pointsValue);
-            audioSource.PlayOneShot(happyAudioClip);
-        }
-        else
-        {
-            Unhappy();
-        }
+            if (candyType == preferredCandyType)
+            {
+                ShowSpeechBubble(happySprite);
+                ScoringController scoringController = FindObjectOfType<ScoringController>();
+                scoringController.IncreaseScore(pointsValue);
+                audioSource.PlayOneShot(happyAudioClip);
+            }
+            else
+            {
+                Unhappy();
+            }
 
-        Leave();
+            Leave();
+        }
     }
 
     private void Unhappy()
@@ -156,6 +160,7 @@ public abstract class LittleBeast : MonoBehaviour
         // If we left the walls, become real
         if (collision.gameObject.layer == 8)
         {
+            enteredPlayableArea = true;
             ourCollider.isTrigger = false;
         }
         // If we left the background, despawn

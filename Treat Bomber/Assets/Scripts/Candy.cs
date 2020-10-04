@@ -68,7 +68,7 @@ public class Candy : MonoBehaviour
                 Collider2D currentCollider = colliders[i];
 
                 LittleBeast currentLittleBeast = currentCollider.gameObject.GetComponent<LittleBeast>();
-                if (currentLittleBeast != null) // if we hit a kid
+                if (currentLittleBeast != null && !currentLittleBeast.isLeaving) // if we hit a kid
                 {
                     // If we hit multiple LBs, only give the candy to one of them
                     // If we hit any that prefer this candy, give it to them
