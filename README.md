@@ -1,6 +1,6 @@
 # Candy Feast for the Little Beasts
 
-A game by **The Fantastically Woolly Onions Clad in Corduroy of the Night**
+A game by **The Fantastically Woolly Onions Clad in Corduroy of the Night** Team
 
 Made in Unity for the **Wholesome Games Jam 2020**: https://itch.io/jam/wholesome-games-jam-2020
 <br/><br/>
@@ -17,3 +17,15 @@ Drop Candy: Left Mouse Button or Space
 Switch Candy Type: 1/2/3/4 or A/D or left/right arrows or Scroll Wheel
 
 Quit: Escape
+
+**Credits**:
+
+Ian Wark - Programmer, Sound Effects
+
+Alexander Ozero - Programmer
+
+Emily Casavant - Music
+
+Bella Fuccaro - Lead Artist
+
+Alexis Graham - Artist, Sound Effects
