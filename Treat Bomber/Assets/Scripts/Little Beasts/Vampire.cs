@@ -14,10 +14,10 @@ public class Vampire : LittleBeast
     {
         preferredCandyType = eCandyType.VAMPIRE;
 
+        base.Start();
+
         // Spawn vampire above other monsters
         rigidBody.MovePosition(rigidBody.position * raiseVampire);
-
-        base.Start();
     }
 
     // Update is called once per frame
