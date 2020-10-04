@@ -18,11 +18,11 @@ Switch Candy Type: 1/2/3/4 or A/D or left/right arrows or Scroll Wheel
 
 Quit: Escape
 
-Credits:
+**Credits**:
 
 Ian Wark - Programmer, Sound Effects
 
-Alex Ozero - Programmer
+Alexander Ozero - Programmer
 
 Emily Casavant - Music
 
