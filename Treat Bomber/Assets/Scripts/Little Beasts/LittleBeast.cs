@@ -5,7 +5,12 @@ public abstract class LittleBeast : MonoBehaviour
     [SerializeField]
     private GameObject speechBubbleObject = null;
     [SerializeField]
-    private SpriteRenderer speechBubbleItemSprite = null;
+    private SpriteRenderer speechBubbleItemSpriteRend = null;
+
+    [SerializeField]
+    private Sprite sadSprite = null;
+    [SerializeField]
+    private Sprite happySprite = null;
 
     // Must be set by derived class!
     protected eCandyType preferredCandyType;
@@ -54,9 +59,7 @@ public abstract class LittleBeast : MonoBehaviour
             candySpeechTime -= Time.deltaTime;
             if (!showingSpeechBubble && candySpeechTime <= 0)
             {
-                speechBubbleObject.SetActive(true);
-                speechBubbleItemSprite.sprite = preferredCandyData.sprite;
-                showingSpeechBubble = true;
+                ShowSpeechBubble(preferredCandyData.sprite);
             }
 
             giveUpTime -= Time.deltaTime;
@@ -72,6 +75,7 @@ public abstract class LittleBeast : MonoBehaviour
     {
         if (candyType == preferredCandyType)
         {
+            ShowSpeechBubble(happySprite);
             ScoringController scoringController = FindObjectOfType<ScoringController>();
             scoringController.IncreaseScore(pointsValue);
         }
@@ -85,6 +89,7 @@ public abstract class LittleBeast : MonoBehaviour
 
     private void Unhappy()
     {
+        ShowSpeechBubble(sadSprite);
         ScoringController scoringController = FindObjectOfType<ScoringController>();
         scoringController.IncreaseStrikes();
         Leave();
@@ -107,6 +112,13 @@ public abstract class LittleBeast : MonoBehaviour
         {
             movement.x = -1;
         }
+    }
+
+    private void ShowSpeechBubble(Sprite sprite)
+    {
+        speechBubbleObject.SetActive(true);
+        speechBubbleItemSpriteRend.sprite = sprite;
+        showingSpeechBubble = true;
     }
 
     // If going right, flip sprite

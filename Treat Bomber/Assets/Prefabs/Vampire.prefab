@@ -48,7 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechBubbleObject: {fileID: 5979492340581349876}
-  speechBubbleItemSprite: {fileID: 3110798357168874621}
+  speechBubbleItemSpriteRend: {fileID: 3110798357168874621}
+  sadSprite: {fileID: 21300000, guid: c424f59c92e18f74ba0b82aa40b91c1d, type: 3}
+  happySprite: {fileID: 21300000, guid: 26b17099cfba6594799c526cf9f25aea, type: 3}
 --- !u!212 &-6685597076743591546
 SpriteRenderer:
   m_ObjectHideFlags: 0
