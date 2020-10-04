@@ -14,6 +14,9 @@ public class Spawner : MonoBehaviour
     private Transform scarecrowPrefab = null;
 
     [SerializeField]
+    private Transform vampirePrefab = null;
+
+    [SerializeField]
     float spawnTime = 5.0f;
 
     [SerializeField]
