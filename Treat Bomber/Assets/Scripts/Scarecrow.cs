@@ -5,6 +5,10 @@ public class Scarecrow : LittleBeast
     protected Rigidbody2D rigidBody = null;
     protected SpriteRenderer sprite = null;
 
+    private bool moving = true;
+    private float pause = 0.1f;
+    private float timeLeft = 0.1f;
+
     private Vector2 xSpeed = new Vector2(0.125f, 0);
     protected Vector2 movement = new Vector2();
 
@@ -39,19 +43,34 @@ public class Scarecrow : LittleBeast
     // Update is called once per frame
     void Update()
     {
-        // Accelerate the jump/fall
-        height.y += ySpeed + acceleration / 2;
-        ySpeed += acceleration;
-        
-        DoMove();
-        FlipToMovement();
-
-        // If hitting the ground, start jumping again
-        if (rigidBody.position.y < groundHeight.y)
+        if (moving)
         {
-            height.y = 0;
-            ySpeed = jumpSpeed;
-            rigidBody.MovePosition((rigidBody.position * zeroY) + groundHeight);
+            // Accelerate the jump/fall
+            height.y += ySpeed + acceleration / 2;
+            ySpeed += acceleration;
+        
+            DoMove();
+            FlipToMovement();
+
+            // If hitting the ground, land at correct level and pause
+            if (rigidBody.position.y < groundHeight.y)
+            {
+                height.y = 0;
+                ySpeed = jumpSpeed;
+                rigidBody.MovePosition((rigidBody.position * zeroY) + groundHeight);
+                moving = false;
+            }
+        }
+
+        else
+        {
+            timeLeft -= Time.deltaTime;
+
+            if (timeLeft <= 0.0f)
+            {
+                timeLeft = pause;
+                moving = true;
+            }
         }
     }
 
