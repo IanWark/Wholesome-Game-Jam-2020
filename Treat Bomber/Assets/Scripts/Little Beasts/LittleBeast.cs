@@ -2,6 +2,7 @@
 
 public abstract class LittleBeast : MonoBehaviour
 {
+    [Header("Speech Bubble")]
     [SerializeField]
     private SpriteRenderer speechBubble = null;
 
@@ -9,6 +10,12 @@ public abstract class LittleBeast : MonoBehaviour
     private Sprite sadSprite = null;
     [SerializeField]
     private Sprite happySprite = null;
+
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip sadAudioClip = null;
+    [SerializeField]
+    private AudioClip happyAudioClip = null;
 
     // Must be set by derived class!
     protected eCandyType preferredCandyType;
@@ -25,6 +32,7 @@ public abstract class LittleBeast : MonoBehaviour
     protected Rigidbody2D rigidBody = null;
     protected Collider2D ourCollider = null;
     protected SpriteRenderer sprite = null;
+    private AudioSource audioSource = null;
 
     protected bool showingSpeechBubble = false;
     protected bool isLeaving = false;
@@ -42,6 +50,7 @@ public abstract class LittleBeast : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         ourCollider = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
+        audioSource = FindObjectOfType<MonsterAudioPlayer>().audioSource;
 
         speechBubble.gameObject.SetActive(false);
     }
@@ -72,6 +81,7 @@ public abstract class LittleBeast : MonoBehaviour
             ShowSpeechBubble(happySprite);
             ScoringController scoringController = FindObjectOfType<ScoringController>();
             scoringController.IncreaseScore(pointsValue);
+            audioSource.PlayOneShot(happyAudioClip);
         }
         else
         {
@@ -86,6 +96,7 @@ public abstract class LittleBeast : MonoBehaviour
         ShowSpeechBubble(sadSprite);
         ScoringController scoringController = FindObjectOfType<ScoringController>();
         scoringController.IncreaseStrikes();
+        audioSource.PlayOneShot(sadAudioClip);
         Leave();
     }
 
