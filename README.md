@@ -18,6 +18,8 @@ Switch Candy Type: 1/2/3/4 or A/D or left/right arrows or Scroll Wheel
 
 Quit: Escape
 
+<br/>
+
 **Credits**:
 
 Ian Wark - Programmer, Sound Effects
@@ -30,7 +32,10 @@ Bella Fuccaro - Lead Artist
 
 Alexis Graham - Artist, Sound Effects
 
+<br/>
+
 **Audio Assets Credits**
+
 Crow - https://freesound.org/people/vixuxx/sounds/9874/
 
 Drinking - http://soundbible.com/1502-Slurping-2.html
