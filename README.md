@@ -26,6 +26,6 @@ Alexander Ozero - Programmer
 
 Emily Casavant - Music
 
-Isabella Fuccaro - Lead Artist
+Bella Fuccaro - Lead Artist
 
 Alexis Graham - Artist, Sound Effects
