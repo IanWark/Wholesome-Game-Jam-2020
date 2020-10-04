@@ -39,3 +39,5 @@ Alexis Graham - Artist, Sound Effects
 Crow - https://freesound.org/people/vixuxx/sounds/9874/
 
 Drinking - http://soundbible.com/1502-Slurping-2.html
+
+Robot Chatter - https://freesound.org/people/ZacMakesLOUDNoises/sounds/173340/
