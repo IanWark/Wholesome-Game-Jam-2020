@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class ScoringController : MonoBehaviour
@@ -26,6 +24,8 @@ public class ScoringController : MonoBehaviour
     private int currentScore = 0;
     private int currentStrikes = 0;
 
+    private bool gameEnded = false;
+
     private void Start()
     {
         scoringUI.SetScoreValue(0);
@@ -35,22 +35,28 @@ public class ScoringController : MonoBehaviour
 
     public void IncreaseScore(int points)
     {
-        currentScore += points;
+        if (!gameEnded)
+        {
+            currentScore += points;
 
-        // Update UI
-        scoringUI.SetScoreValue(currentScore);
+            // Update UI
+            scoringUI.SetScoreValue(currentScore);
+        }
     }
 
     public void IncreaseStrikes()
-    {
-        currentStrikes += 1;
-        if (currentStrikes >= strikesUntilOut)
+    { 
+        if (!gameEnded)
         {
-            EndGame();
-        }
+            currentStrikes += 1;
+            if (currentStrikes >= strikesUntilOut)
+            {
+                EndGame();
+            }
 
-        // Update UI
-        scoringUI.SetStrikesValue(currentStrikes);
+            // Update UI
+            scoringUI.SetStrikesValue(currentStrikes);
+        }
     }
 
     private void EndGame()
@@ -60,5 +66,7 @@ public class ScoringController : MonoBehaviour
 
         gameOverPanel.SetActive(true);
         gameOverBodyText.text = gameOverBeforeScoreString + currentScore.ToString() + gameOverAfterScoreString;
+
+        gameEnded = true;
     }
 }
