@@ -2,15 +2,12 @@
 
 public class Scarecrow : LittleBeast
 {
-    protected Rigidbody2D rigidBody = null;
-    protected SpriteRenderer sprite = null;
-
     private bool moving = true;
     private float pause = 0.1f;
     private float timeLeft = 0.1f;
 
     private Vector2 xSpeed = new Vector2(0.125f, 0);
-    protected Vector2 movement = new Vector2();
+    protected float leavingSpeedMultiplier = 10;
 
     private float ySpeed;
     private float jumpSpeed = 0.05f;
@@ -22,26 +19,21 @@ public class Scarecrow : LittleBeast
 
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         preferredCandyType = eCandyType.SCARECROW;
-
-        rigidBody = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
-
-        // Randomly start moving to the left or right.
-        int[] values = { -1, 1 };
-        movement.x = values[Random.Range(0, 2)];
 
         // Set the starting ground height to where the scarecrow is standing
         groundHeight.x = 0;
         groundHeight.y = rigidBody.position.y;
 
         ySpeed = jumpSpeed;
+
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    override protected void Update()
     {
         if (moving)
         {
@@ -72,32 +64,13 @@ public class Scarecrow : LittleBeast
                 moving = true;
             }
         }
+
+        base.Update();
     }
 
     private void DoMove()
     {
-        rigidBody.MovePosition(rigidBody.position + (movement * xSpeed) + height);
-    }
-
-    // If going right, flip sprite
-    // If going left, unflip sprite
-    // If not moving, do not change spirte
-    private void FlipToMovement()
-    {
-        if (movement.x > 0)
-        {
-            sprite.flipX = true;
-        }
-        else if (movement.x < 0)
-        {
-            sprite.flipX = false;
-        }
-    }
-
-    // On colliding with a wall
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Change movement direction
-        movement.x *= -1;
+        float speedMultiplier = isLeaving ? leavingSpeedMultiplier : 1;
+        rigidBody.MovePosition(rigidBody.position + (movement * xSpeed * speedMultiplier) + height);
     }
 }

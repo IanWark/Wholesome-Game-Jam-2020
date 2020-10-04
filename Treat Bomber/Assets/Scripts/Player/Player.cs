@@ -19,11 +19,9 @@ public class Player : MonoBehaviour
     private Transform candyPrefab = null;
 
     [SerializeField]
-    private CandyDataList candyDataList = null;
-
-    [SerializeField]
     private CandySelectionUIController candySelectionUI = null;
 
+    private CandyDataList candyDataList = null;
     private const int candyMinIndex = 0;
     private const int candyMaxIndex = 3;
     private int selectedCandyIndex = 1;
@@ -38,6 +36,7 @@ public class Player : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
 
+        candyDataList = FindObjectOfType<CandyDataHolder>().candyDataList;
         candySelectionUI.Setup(candyDataList);
         SelectCandy(0);
     }
@@ -64,48 +63,35 @@ public class Player : MonoBehaviour
         {
             SelectCandy(1);
         }
-        if (Input.GetButtonDown("Select 3"))
+        else if(Input.GetButtonDown("Select 3"))
         {
             SelectCandy(2);
         }
-        if (Input.GetButtonDown("Select 4"))
+        else if(Input.GetButtonDown("Select 4"))
         {
             SelectCandy(3);
         }
-        if (Input.GetButtonDown("Select 5"))
+        else if(Input.GetButtonDown("Select 5"))
         {
             SelectCandy(4);
         }
-        if (Input.GetButtonDown("Select 6"))
+        else if(Input.GetButtonDown("Select 6"))
         {
             SelectCandy(5);
         }
-        if (Input.GetButtonDown("Select 7"))
+        else if(Input.GetButtonDown("Select 7"))
         {
             SelectCandy(6);
+        }
+        else if (Input.GetButtonDown("Select Next"))
+        {
+            // A/D or left/right also changes selected candy
+            SelectCandyFromInputAxis(Input.GetAxis("Select Next"));
         }
         else
         {
             // Scrolling mouse also changes selected candy
-            float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-            // round input to either -1 or 1
-            scrollInput = Mathf.Sign(scrollInput) * Mathf.Ceil(Mathf.Abs(scrollInput));
-            scrollInput = Mathf.Clamp(scrollInput, -1, 1);
-
-            selectedCandyIndex += (int)scrollInput;
-
-            // Wrap around if needed
-            if (selectedCandyIndex < candyMinIndex)
-            {
-                selectedCandyIndex = candyMaxIndex;
-            }
-            else if (selectedCandyIndex > candyMaxIndex)
-            {
-                selectedCandyIndex = candyMinIndex;
-            }
-
-            // Select next candy
-            SelectCandy(selectedCandyIndex);
+            SelectCandyFromInputAxis(-1 * Input.GetAxis("Mouse ScrollWheel"));
         }
 
         if (candyTimer > 0)
@@ -129,6 +115,28 @@ public class Player : MonoBehaviour
             selectedCandy = candyDataList.GetCandyDataObject(selectedCandyIndex);
             candySelectionUI.SelectCandy(candyIndex);
         }
+    }
+
+    private void SelectCandyFromInputAxis(float input)
+    {
+        // round input to either -1 or 1
+        input = Mathf.Sign(input) * Mathf.Ceil(Mathf.Abs(input));
+        input = Mathf.Clamp(input, -1, 1);
+
+        selectedCandyIndex += (int)input;
+
+        // Wrap around if needed
+        if (selectedCandyIndex < candyMinIndex)
+        {
+            selectedCandyIndex = candyMaxIndex;
+        }
+        else if (selectedCandyIndex > candyMaxIndex)
+        {
+            selectedCandyIndex = candyMinIndex;
+        }
+
+        // Select next candy
+        SelectCandy(selectedCandyIndex);
     }
 
     private void SpawnCandy()
