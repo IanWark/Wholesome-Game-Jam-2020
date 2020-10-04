@@ -5,7 +5,13 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField]
-    private Transform prefab = null;
+    private Transform zombiePrefab = null;
+
+    [SerializeField]
+    private Transform robotPrefab = null;
+
+    [SerializeField]
+    private Transform scarecrowPrefab = null;
 
     [SerializeField]
     float spawnTime = 5.0f;
@@ -20,7 +26,7 @@ public class Spawner : MonoBehaviour
 
         if (timeLeft <= 0.0f)
         {
-            Instantiate(prefab, transform.position, transform.rotation);
+            Instantiate(zombiePrefab, transform.position, transform.rotation);
             timeLeft = spawnTime;
         }
     }
