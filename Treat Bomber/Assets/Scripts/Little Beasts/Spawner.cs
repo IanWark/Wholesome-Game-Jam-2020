@@ -17,20 +17,45 @@ public class Spawner : MonoBehaviour
     private Transform vampirePrefab = null;
 
     [SerializeField]
-    float spawnTime = 5.0f;
+    private float spawnTime = 5.0f;
 
     [SerializeField]
-    float timeLeft = 0;
+    private float timeLeft = 0;
+
+    private float currentTime;
 
     // Update is called once per frame
     void Update()
+    {
+        AttemptSpawn();
+        DecreaseSpawnTime();
+    }
+
+    void AttemptSpawn()
     {
         timeLeft -= Time.deltaTime;
 
         if (timeLeft <= 0.0f)
         {
-            Instantiate(zombiePrefab, transform.position, transform.rotation);
+            Spawn(zombiePrefab);
+
             timeLeft = spawnTime;
         }
+    }
+
+    void DecreaseSpawnTime()
+    {
+        currentTime = Time.time;
+
+        if (spawnTime >= 1.0f)
+        {
+            spawnTime -= currentTime/100000;
+            Debug.Log("Spawn time: " + spawnTime);
+        }
+    }
+
+    void Spawn(Transform prefab)
+    {
+        Instantiate(prefab, transform.position, transform.rotation);
     }
 }
