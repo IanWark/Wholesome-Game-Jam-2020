@@ -687,8 +687,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 403864519}
+  - component: {fileID: 403864520}
   m_Layer: 0
-  m_Name: Left Spawn Point (1)
+  m_Name: Right Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -702,12 +703,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403864518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 631738078}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &403864520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403864518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30417cfc798bd52489ac34683a69af94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMovement: {x: -1, y: 0}
 --- !u!1 &410540300
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,7 +949,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c2e794d52bf4bb74099a43f8448afe7a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 12245e394771cb5478a37ee3cb12dc28, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1044,6 +1058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 503233404}
+  - component: {fileID: 503233405}
   m_Layer: 0
   m_Name: Left Spawn Point
   m_TagString: Untagged
@@ -1065,6 +1080,19 @@ Transform:
   m_Father: {fileID: 631738078}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503233405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503233403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30417cfc798bd52489ac34683a69af94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMovement: {x: 1, y: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,6 +1361,9 @@ MonoBehaviour:
   vampirePrefab: {fileID: 2784841561589268736, guid: 719c34dc9375223c78bd7b61eac49749, type: 3}
   spawnTime: 5
   timeLeft: 0
+  spawnPoints:
+  - {fileID: 503233405}
+  - {fileID: 403864520}
 --- !u!1 &699613701
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,7 +2339,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086097896}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3396,7 +3427,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146509912}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

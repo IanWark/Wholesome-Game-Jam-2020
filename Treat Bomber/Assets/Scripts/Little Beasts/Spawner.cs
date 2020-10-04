@@ -22,6 +22,9 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private float timeLeft = 0;
 
+    [SerializeField]
+    private List<SpawnPoint> spawnPoints = null;
+
     private float currentTime;
     private float newSpawn;
 
@@ -110,6 +113,10 @@ public class Spawner : MonoBehaviour
 
     void Spawn(Transform prefab)
     {
-        Instantiate(prefab, transform.position, transform.rotation);
+        SpawnPoint spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+
+        Transform newBeast = Instantiate(prefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+
+        newBeast.GetComponent<LittleBeast>().movement = spawnPoint.startMovement;
     }
 }

@@ -22,7 +22,7 @@ public abstract class LittleBeast : MonoBehaviour
     protected float candySpeechTime = 10f;  // Time until candy demand speech bubbles appears
     protected float giveUpTime = 30f;       // Time until giving up and leaving
 
-    protected Vector2 movement = new Vector2();
+    public Vector2 movement = new Vector2();
 
     protected Rigidbody2D rigidBody = null;
     protected Collider2D ourCollider = null;
@@ -46,10 +46,6 @@ public abstract class LittleBeast : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
 
         speechBubbleObject.SetActive(false);
-
-        // Randomly start moving to the left or right.
-        int[] values = { -1, 1 };
-        movement.x = values[Random.Range(0, 2)];
     }
 
     protected virtual void Update()
@@ -145,8 +141,13 @@ public abstract class LittleBeast : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        // If we left the walls, become real
+        if (collision.gameObject.layer == 8)
+        {
+            ourCollider.isTrigger = false;
+        }
         // If we left the background, despawn
-        if (collision.gameObject.layer == 9)
+        else if (collision.gameObject.layer == 9)
         {
             Destroy(gameObject);
         }
