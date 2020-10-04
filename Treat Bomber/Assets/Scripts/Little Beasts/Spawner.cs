@@ -38,8 +38,6 @@ public class Spawner : MonoBehaviour
     {
         AttemptSpawn();
         IncreaseSpawnChances();
-        //DecreaseSpawnTime();
-        Debug.Log("Spawn time: " + spawnTime);
     }
 
     void AttemptSpawn()
@@ -68,16 +66,6 @@ public class Spawner : MonoBehaviour
             }
 
             timeLeft = spawnTime;
-        }
-    }
-
-    void DecreaseSpawnTime()
-    {
-        currentTime = Time.time;
-
-        if (spawnTime >= 1.0f)
-        {
-            spawnTime -= currentTime/100000;
         }
     }
 
