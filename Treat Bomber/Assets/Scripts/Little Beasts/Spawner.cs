@@ -23,11 +23,18 @@ public class Spawner : MonoBehaviour
     private float timeLeft = 0;
 
     private float currentTime;
+    private float newSpawn;
+
+    private float zombieChance = 1;
+    private float robotChance = 0;
+    private float scarecrowChance = 0;
+    private float vampireChance = 0;
 
     // Update is called once per frame
     void Update()
     {
         AttemptSpawn();
+        IncreaseSpawnChances();
         DecreaseSpawnTime();
     }
 
@@ -37,7 +44,24 @@ public class Spawner : MonoBehaviour
 
         if (timeLeft <= 0.0f)
         {
-            Spawn(zombiePrefab);
+            newSpawn = Random.Range(0, zombieChance + robotChance + scarecrowChance + vampireChance);
+
+            if (newSpawn <= zombieChance)
+            {
+                Spawn(zombiePrefab);
+            }
+            else if (newSpawn <= zombieChance + robotChance)
+            {
+                Spawn(robotPrefab);
+            }
+            else if (newSpawn <= zombieChance + robotChance + scarecrowChance)
+            {
+                Spawn(scarecrowPrefab);
+            }
+            else if (newSpawn <= zombieChance + robotChance + scarecrowChance + vampireChance)
+            {
+                Spawn(vampirePrefab);
+            }
 
             timeLeft = spawnTime;
         }
@@ -50,7 +74,37 @@ public class Spawner : MonoBehaviour
         if (spawnTime >= 1.0f)
         {
             spawnTime -= currentTime/100000;
-            Debug.Log("Spawn time: " + spawnTime);
+        }
+    }
+
+    void IncreaseSpawnChances()
+    {
+        if (currentTime > 5)
+        {
+            robotChance = 0.1f;
+        }
+        if (currentTime > 10)
+        {
+            robotChance = 0.2f;
+            scarecrowChance = 0.1f;
+        }
+        if (currentTime > 15)
+        {
+            robotChance = 0.3f;
+            scarecrowChance = 0.2f;
+            vampireChance = 0.1f;
+        }
+        if (currentTime > 20)
+        {
+            robotChance = 0.4f;
+            scarecrowChance = 0.3f;
+            vampireChance = 0.2f;
+        }
+        if (currentTime > 30)
+        {
+            robotChance = 0.5f;
+            scarecrowChance = 0.4f;
+            vampireChance = 0.3f;
         }
     }
 
