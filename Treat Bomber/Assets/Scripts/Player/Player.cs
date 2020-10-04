@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private CandySelectionUIController candySelectionUI = null;
 
+    [SerializeField]
+    private AudioClip dropAudioClip = null;
+
     private CandyDataList candyDataList = null;
     private const int candyMinIndex = 0;
     private const int candyMaxIndex = 3;
@@ -29,12 +32,14 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rigidBody = null;
     private SpriteRenderer sprite = null;
+    private AudioSource audioSource = null;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
         candyDataList = FindObjectOfType<CandyDataHolder>().candyDataList;
         candySelectionUI.Setup(candyDataList);
@@ -145,6 +150,7 @@ public class Player : MonoBehaviour
         Candy candyScript = candyObject.GetComponent<Candy>();
 
         candyScript.SetCandy(selectedCandy);
+        audioSource.PlayOneShot(dropAudioClip);
 
         candyTimer = timeBetweenCandy;
     }
