@@ -34,7 +34,7 @@ Alexis Graham - Artist, Sound Effects
 
 <br/>
 
-**Audio Assets Credits**
+**Audio Assets Credits**:
 
 Crow - https://freesound.org/people/vixuxx/sounds/9874/
 
