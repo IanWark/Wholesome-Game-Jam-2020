@@ -21,7 +21,7 @@ public class CandySelectionUIController : MonoBehaviour
         for (int i = 0; i < candyList.GetCount(); ++i)
         {
             CandySelectorUI newSelector = Instantiate(candySelectorPrefab, transform).gameObject.GetComponent<CandySelectorUI>();
-            newSelector.Setup(candyList.GetCandyDataObject(i));
+            newSelector.Setup(candyList.GetCandyDataObject(i), i+1);
 
             candySelectors.Add(newSelector);
         }
