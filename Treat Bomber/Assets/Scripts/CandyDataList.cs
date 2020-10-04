@@ -9,6 +9,7 @@ public class CandyDataList : ScriptableObject
     {
         public eCandyType candyType;
         public Sprite sprite;
+        public Sprite speechBubbleSprite;
         public string candyName;
     }
     

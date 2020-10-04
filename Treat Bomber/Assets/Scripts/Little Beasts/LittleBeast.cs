@@ -3,9 +3,7 @@
 public abstract class LittleBeast : MonoBehaviour
 {
     [SerializeField]
-    private GameObject speechBubbleObject = null;
-    [SerializeField]
-    private SpriteRenderer speechBubbleItemSpriteRend = null;
+    private SpriteRenderer speechBubble = null;
 
     [SerializeField]
     private Sprite sadSprite = null;
@@ -45,7 +43,7 @@ public abstract class LittleBeast : MonoBehaviour
         ourCollider = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
 
-        speechBubbleObject.SetActive(false);
+        speechBubble.gameObject.SetActive(false);
     }
 
     protected virtual void Update()
@@ -55,7 +53,7 @@ public abstract class LittleBeast : MonoBehaviour
             candySpeechTime -= Time.deltaTime;
             if (!showingSpeechBubble && candySpeechTime <= 0)
             {
-                ShowSpeechBubble(preferredCandyData.sprite);
+                ShowSpeechBubble(preferredCandyData.speechBubbleSprite);
             }
 
             giveUpTime -= Time.deltaTime;
@@ -112,8 +110,8 @@ public abstract class LittleBeast : MonoBehaviour
 
     private void ShowSpeechBubble(Sprite sprite)
     {
-        speechBubbleObject.SetActive(true);
-        speechBubbleItemSpriteRend.sprite = sprite;
+        speechBubble.gameObject.SetActive(true);
+        speechBubble.sprite = sprite;
         showingSpeechBubble = true;
     }
 

@@ -15,13 +15,17 @@ MonoBehaviour:
   candyList:
   - candyType: 1
     sprite: {fileID: 21300000, guid: 884d0f2b13c89a44d9fa58090bd86d36, type: 3}
+    speechBubbleSprite: {fileID: 21300000, guid: 953e1c8f8aca62449a1592dda8f5e1e2, type: 3}
     candyName: Gummy Brains
   - candyType: 2
     sprite: {fileID: 21300000, guid: 7996a3b92512e2844a20c9ca47cdfc59, type: 3}
+    speechBubbleSprite: {fileID: 21300000, guid: 940660412916c8d46817d6f7bc7de297, type: 3}
     candyName: Microchips
   - candyType: 3
     sprite: {fileID: 21300000, guid: fc1ca609811094443b7ca1fa920c9a29, type: 3}
+    speechBubbleSprite: {fileID: 21300000, guid: d6e805abed3e0884aa3ce2e6e949201e, type: 3}
     candyName: Candy Corn
   - candyType: 4
     sprite: {fileID: 21300000, guid: 836dcb3aab6f2e842abe5d52523f61e4, type: 3}
+    speechBubbleSprite: {fileID: 21300000, guid: 9e8f784e7b5a048488fe38a2bc7e7e3f, type: 3}
     candyName: Bloud Pouch
