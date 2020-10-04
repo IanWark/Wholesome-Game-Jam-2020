@@ -103,7 +103,7 @@ public abstract class LittleBeast : MonoBehaviour
         Leave();
     }
 
-    protected void Leave()
+    public void Leave()
     {
         // Set flag to use leaving speed
         isLeaving = true;
