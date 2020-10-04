@@ -29,3 +29,8 @@ Emily Casavant - Music
 Bella Fuccaro - Lead Artist
 
 Alexis Graham - Artist, Sound Effects
+
+**Audio Assets Credits**
+Crow - https://freesound.org/people/vixuxx/sounds/9874/
+
+Drinking - http://soundbible.com/1502-Slurping-2.html
