@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScoringController : MonoBehaviour
 {
@@ -8,7 +9,19 @@ public class ScoringController : MonoBehaviour
     private int strikesUntilOut = 3;
 
     [SerializeField]
+    private string gameOverBeforeScoreString = "Your score was ";
+
+    [SerializeField]
+    private string gameOverAfterScoreString = "!";
+
+    [SerializeField]
     private ScoringUI scoringUI = null;
+
+    [SerializeField]
+    private GameObject gameOverPanel = null;
+
+    [SerializeField]
+    private TextMeshProUGUI gameOverBodyText = null;
 
     private int currentScore = 0;
     private int currentStrikes = 0;
@@ -33,10 +46,19 @@ public class ScoringController : MonoBehaviour
         currentStrikes += 1;
         if (currentStrikes >= strikesUntilOut)
         {
-            // End game
+            EndGame();
         }
 
         // Update UI
         scoringUI.SetStrikesValue(currentStrikes);
+    }
+
+    private void EndGame()
+    {
+        FindObjectOfType<Player>().gameObject.SetActive(false);
+        FindObjectOfType<Spawner>().gameObject.SetActive(false);
+
+        gameOverPanel.SetActive(true);
+        gameOverBodyText.text = gameOverBeforeScoreString + currentScore.ToString() + gameOverAfterScoreString;
     }
 }
