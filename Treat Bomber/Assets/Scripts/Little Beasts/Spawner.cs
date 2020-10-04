@@ -30,6 +30,7 @@ public class Spawner : MonoBehaviour
         if (timeLeft <= 0.0f)
         {
             Instantiate(zombiePrefab, transform.position, transform.rotation);
+            Instantiate(vampirePrefab, transform.position, transform.rotation);
             timeLeft = spawnTime;
         }
     }
