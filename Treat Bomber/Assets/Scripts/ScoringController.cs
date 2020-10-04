@@ -21,6 +21,18 @@ public class ScoringController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI gameOverBodyText = null;
 
+    [SerializeField]
+    private SpriteRenderer redFilter = null;
+
+    [SerializeField]
+    private float redOpacityTwoStrikesLeft = 0.1f;
+
+    [SerializeField]
+    private float redOpacityOneStrikeLeft = 0.25f;
+
+    [SerializeField]
+    private float redOpacityGameOver = 0.50f;
+
     private int currentScore = 0;
     private int currentStrikes = 0;
 
@@ -53,6 +65,20 @@ public class ScoringController : MonoBehaviour
             {
                 EndGame();
             }
+            else if (currentStrikes == strikesUntilOut - 2)
+            {
+                redFilter.enabled = true;
+                Color newColor = redFilter.color;
+                newColor.a = redOpacityTwoStrikesLeft;
+                redFilter.color = newColor;
+            }
+            else if (currentStrikes == strikesUntilOut -1)
+            {
+                redFilter.enabled = true;
+                Color newColor = redFilter.color;
+                newColor.a = redOpacityOneStrikeLeft;
+                redFilter.color = newColor;
+            }
 
             // Update UI
             scoringUI.SetStrikesValue(currentStrikes);
@@ -63,6 +89,11 @@ public class ScoringController : MonoBehaviour
     {
         FindObjectOfType<Player>().gameObject.SetActive(false);
         FindObjectOfType<Spawner>().gameObject.SetActive(false);
+
+        redFilter.enabled = true;
+        Color newColor = redFilter.color;
+        newColor.a = redOpacityGameOver;
+        redFilter.color = newColor;
 
         gameOverPanel.SetActive(true);
         gameOverBodyText.text = gameOverBeforeScoreString + currentScore.ToString() + gameOverAfterScoreString;
