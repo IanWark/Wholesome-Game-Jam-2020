@@ -8,6 +8,8 @@ public class Vampire : LittleBeast
     protected Rigidbody2D rigidBody = null;
     protected SpriteRenderer sprite = null;
 
+    private Vector2 zeroY = new Vector2(1, 0);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,9 @@ public class Vampire : LittleBeast
         // Randomly start moving to the left or right.
         int[] values = { -1, 1 };
         movement.x = values[Random.Range(0, 2)];
+
+        // Spawn vampire above other monsters
+        rigidBody.MovePosition(rigidBody.position * zeroY);
     }
 
     // Update is called once per frame
