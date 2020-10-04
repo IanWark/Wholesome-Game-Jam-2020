@@ -964,9 +964,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 631738078}
-  - component: {fileID: 631738077}
   - component: {fileID: 631738079}
-  - component: {fileID: 631738080}
   m_Layer: 0
   m_Name: LittleBeastSpawner
   m_TagString: Untagged
@@ -974,21 +972,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &631738077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631738076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d64ec5c0aca20d4696589b4ae3262fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 8189463369389909143, guid: f2e025b593217b14b8d0a5a2fb3c9bc1, type: 3}
-  spawnTime: 5
-  timeLeft: 0
 --- !u!4 &631738078
 Transform:
   m_ObjectHideFlags: 0
@@ -1015,24 +998,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d64ec5c0aca20d4696589b4ae3262fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 946647711024654188, guid: faf9c04ed22a062af8dfe4ad49970815, type: 3}
+  zombiePrefab: {fileID: 8189463369389909143, guid: f2e025b593217b14b8d0a5a2fb3c9bc1, type: 3}
+  robotPrefab: {fileID: 946647711024654188, guid: faf9c04ed22a062af8dfe4ad49970815, type: 3}
+  scarecrowPrefab: {fileID: 1736905112891578354, guid: e6c2aeffa32dc9054b1fbd063f4acf60, type: 3}
+  vampirePrefab: {fileID: 2784841561589268736, guid: 719c34dc9375223c78bd7b61eac49749, type: 3}
   spawnTime: 5
-  timeLeft: 15
---- !u!114 &631738080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631738076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d64ec5c0aca20d4696589b4ae3262fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 1736905112891578354, guid: e6c2aeffa32dc9054b1fbd063f4acf60, type: 3}
-  spawnTime: 5
-  timeLeft: 30
+  timeLeft: 0
 --- !u!1 &699613701
 GameObject:
   m_ObjectHideFlags: 0
