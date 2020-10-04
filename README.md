@@ -21,7 +21,11 @@ Quit: Escape
 Credits:
 
 Ian Wark - Programmer, Sound Effects
+
 Alex Ozero - Programmer
+
 Emily Casavant - Music
+
 Isabella Fuccaro - Lead Artist
+
 Alexis Graham - Artist, Sound Effects
