@@ -2,15 +2,12 @@
 
 public class Scarecrow : LittleBeast
 {
-    protected Rigidbody2D rigidBody = null;
-    protected SpriteRenderer sprite = null;
-
     private bool moving = true;
     private float pause = 0.1f;
     private float timeLeft = 0.1f;
 
     private Vector2 xSpeed = new Vector2(0.125f, 0);
-    protected Vector2 movement = new Vector2();
+    protected float leavingSpeedMultiplier = 10;
 
     private float ySpeed;
     private float jumpSpeed = 0.05f;
@@ -27,6 +24,7 @@ public class Scarecrow : LittleBeast
         preferredCandyType = eCandyType.SCARECROW;
 
         rigidBody = GetComponent<Rigidbody2D>();
+        ourCollider = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
 
         // Randomly start moving to the left or right.
@@ -76,28 +74,7 @@ public class Scarecrow : LittleBeast
 
     private void DoMove()
     {
-        rigidBody.MovePosition(rigidBody.position + (movement * xSpeed) + height);
-    }
-
-    // If going right, flip sprite
-    // If going left, unflip sprite
-    // If not moving, do not change spirte
-    private void FlipToMovement()
-    {
-        if (movement.x > 0)
-        {
-            sprite.flipX = true;
-        }
-        else if (movement.x < 0)
-        {
-            sprite.flipX = false;
-        }
-    }
-
-    // On colliding with a wall
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Change movement direction
-        movement.x *= -1;
+        float speedMultiplier = isLeaving ? leavingSpeedMultiplier : 1;
+        rigidBody.MovePosition(rigidBody.position + (movement * xSpeed * speedMultiplier) + height);
     }
 }
