@@ -136,6 +136,7 @@ MonoBehaviour:
   happyAudioClip: {fileID: 8300000, guid: b021520f75a51504989135d7bf3c0751, type: 3}
   wantCandyAudioClip: {fileID: 8300000, guid: 772e27e939e7e364abfee9cbfac97b29, type: 3}
   movement: {x: 0, y: 0}
+  isLeaving: 0
 --- !u!212 &1129907778473940059
 SpriteRenderer:
   m_ObjectHideFlags: 0

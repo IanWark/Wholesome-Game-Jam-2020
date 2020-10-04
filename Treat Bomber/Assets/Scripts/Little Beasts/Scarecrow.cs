@@ -33,7 +33,7 @@ public class Scarecrow : LittleBeast
     }
 
     // Update is called once per frame
-    override protected void Update()
+    void FixedUpdate()
     {
         if (moving)
         {
@@ -56,7 +56,7 @@ public class Scarecrow : LittleBeast
 
         else
         {
-            timeLeft -= Time.deltaTime;
+            timeLeft -= Time.fixedDeltaTime;
 
             if (timeLeft <= 0.0f)
             {
