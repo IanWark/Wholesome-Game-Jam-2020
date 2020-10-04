@@ -56,6 +56,9 @@ TagManager:
   - name: Player
     uniqueID: 472126285
     locked: 0
+  - name: Red filter
+    uniqueID: 1999715213
+    locked: 0
   - name: UI
     uniqueID: 2156429385
     locked: 0
