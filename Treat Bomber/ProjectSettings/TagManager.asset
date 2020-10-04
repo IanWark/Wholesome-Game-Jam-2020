@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2301336829
+    locked: 0
+  - name: SpeechBubbles
+    uniqueID: 3098573687
+    locked: 0
+  - name: LittleBeasts
+    uniqueID: 3823421839
+    locked: 0
+  - name: Candy
+    uniqueID: 1884751897
+    locked: 0
+  - name: Player
+    uniqueID: 472126285
+    locked: 0
