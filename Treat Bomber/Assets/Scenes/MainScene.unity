@@ -1400,7 +1400,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 12245e394771cb5478a37ee3cb12dc28, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2970,9 +2970,9 @@ MonoBehaviour:
   gameOverPanel: {fileID: 760919981}
   gameOverBodyText: {fileID: 736761518}
   redFilter: {fileID: 1933817241}
-  redOpacityTwoStrikesLeft: 0.05
-  redOpacityOneStrikeLeft: 0.1
-  redOpacityGameOver: 0.25
+  redOpacityTwoStrikesLeft: 0.1
+  redOpacityOneStrikeLeft: 0.25
+  redOpacityGameOver: 0.44
 --- !u!4 &1389327130
 Transform:
   m_ObjectHideFlags: 0
