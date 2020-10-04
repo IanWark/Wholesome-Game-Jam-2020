@@ -97,7 +97,12 @@ public class Player : MonoBehaviour
         else if (Input.GetButtonDown("Select Next"))
         {
             // A/D or left/right also changes selected candy
-            SelectCandyFromInputAxis(Input.GetAxis("Select Next"));
+            SelectCandyFromInputAxis(1);
+        }
+        else if (Input.GetButtonDown("Select Previous"))
+        {
+            // A/D or left/right also changes selected candy
+            SelectCandyFromInputAxis(-1);
         }
         else
         {

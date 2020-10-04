@@ -9,9 +9,9 @@ InputManager:
     m_Name: Select Next
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: left
+    negativeButton: 
     positiveButton: right
-    altNegativeButton: a
+    altNegativeButton: 
     altPositiveButton: d
     gravity: 3
     dead: 0.001
@@ -22,13 +22,13 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Vertical
+    m_Name: Select Previous
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: down
-    positiveButton: up
-    altNegativeButton: s
-    altPositiveButton: w
+    negativeButton: 
+    positiveButton: left
+    altNegativeButton: 
+    altPositiveButton: a
     gravity: 3
     dead: 0.001
     sensitivity: 3
