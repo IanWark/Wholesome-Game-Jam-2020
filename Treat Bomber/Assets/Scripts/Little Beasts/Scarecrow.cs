@@ -23,13 +23,13 @@ public class Scarecrow : LittleBeast
     {
         preferredCandyType = eCandyType.SCARECROW;
 
+        base.Start();
+
         // Set the starting ground height to where the scarecrow is standing
         groundHeight.x = 0;
         groundHeight.y = rigidBody.position.y;
 
         ySpeed = jumpSpeed;
-
-        base.Start();
     }
 
     // Update is called once per frame
