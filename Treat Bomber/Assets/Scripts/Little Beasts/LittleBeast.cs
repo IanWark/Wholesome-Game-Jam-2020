@@ -16,6 +16,8 @@ public abstract class LittleBeast : MonoBehaviour
     private AudioClip sadAudioClip = null;
     [SerializeField]
     private AudioClip happyAudioClip = null;
+    [SerializeField]
+    private AudioClip wantCandyAudioClip = null;
 
     // Must be set by derived class!
     protected eCandyType preferredCandyType;
@@ -63,6 +65,7 @@ public abstract class LittleBeast : MonoBehaviour
             if (!showingSpeechBubble && candySpeechTime <= 0)
             {
                 ShowSpeechBubble(preferredCandyData.speechBubbleSprite);
+                audioSource.PlayOneShot(wantCandyAudioClip);
             }
 
             giveUpTime -= Time.deltaTime;

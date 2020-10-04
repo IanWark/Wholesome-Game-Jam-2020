@@ -132,9 +132,9 @@ MonoBehaviour:
   speechBubble: {fileID: 1887643268439234568}
   sadSprite: {fileID: 21300000, guid: a01c5d2471345d6478faf805167107af, type: 3}
   happySprite: {fileID: 21300000, guid: 01400ffa61a31c445bd643da2b43f133, type: 3}
-  audioSource: {fileID: 0}
   sadAudioClip: {fileID: 8300000, guid: 835208575a702cc4dad2c88cb0b29865, type: 3}
   happyAudioClip: {fileID: 8300000, guid: ca3c98ac0e0dcaa4a9adc126a260f4ec, type: 3}
+  wantCandyAudioClip: {fileID: 8300000, guid: 8d8df2db20f8d8c408840854ddf9835b, type: 3}
   movement: {x: 0, y: 0}
 --- !u!212 &8189463369389909136
 SpriteRenderer:
