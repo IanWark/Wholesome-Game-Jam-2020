@@ -2242,8 +2242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b837cc23d0b33484c9173b2bbefc4ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectorWidth: 100
-  selectorHeight: 100
+  selectorWidth: 120
+  selectorHeight: 120
   candySelectorPrefab: {fileID: 4065946781997031005, guid: 63b8338ad3cad8648976a4793f853910, type: 3}
 --- !u!1 &858752472
 GameObject:
