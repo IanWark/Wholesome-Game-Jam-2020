@@ -55,6 +55,12 @@ public class Player : MonoBehaviour
 
     private void HandleInput()
     {
+        // Quit
+        if (Input.GetButtonDown("Quit"))
+        {
+            Application.Quit();
+        }
+
         // Movement
         newPosition.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         newPosition.y = transform.position.y;

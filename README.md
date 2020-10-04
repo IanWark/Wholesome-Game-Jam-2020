@@ -15,3 +15,5 @@ Move: Mouse
 Drop Candy: Left Mouse Button or Space
 
 Switch Candy Type: 1/2/3/4 or A/D or left/right arrows or Scroll Wheel
+
+Quit: Escape
