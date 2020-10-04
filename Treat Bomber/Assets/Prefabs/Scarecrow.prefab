@@ -133,7 +133,7 @@ MonoBehaviour:
   sadSprite: {fileID: 21300000, guid: a01c5d2471345d6478faf805167107af, type: 3}
   happySprite: {fileID: 21300000, guid: 01400ffa61a31c445bd643da2b43f133, type: 3}
   sadAudioClip: {fileID: 8300000, guid: 835208575a702cc4dad2c88cb0b29865, type: 3}
-  happyAudioClip: {fileID: 8300000, guid: ca3c98ac0e0dcaa4a9adc126a260f4ec, type: 3}
+  happyAudioClip: {fileID: 8300000, guid: b021520f75a51504989135d7bf3c0751, type: 3}
   wantCandyAudioClip: {fileID: 8300000, guid: 772e27e939e7e364abfee9cbfac97b29, type: 3}
   movement: {x: 0, y: 0}
 --- !u!212 &1129907778473940059
