@@ -1,6 +1,8 @@
 # Candy Feast for the Little Beasts
 itch.io page: https://ubiquitous-mayonnaise.itch.io/candy-feast-for-the-little-beasts
 
+<br/>
+
 A game by **The Fantastically Woolly Onions Clad in Corduroy of the Night** Team
 
 Made in Unity for the **Wholesome Games Jam 2020**: https://itch.io/jam/wholesome-games-jam-2020
