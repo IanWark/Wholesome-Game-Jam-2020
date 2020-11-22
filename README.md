@@ -1,4 +1,5 @@
 # Candy Feast for the Little Beasts
+itch.io page: https://ubiquitous-mayonnaise.itch.io/candy-feast-for-the-little-beasts
 
 A game by **The Fantastically Woolly Onions Clad in Corduroy of the Night** Team
 
